@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effetto Faro CSS</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .faro-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Cono di luce - inizialmente nascosto */
+        .luce {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 80%);
+            filter: blur(25px);
+            transform: rotate(-40deg);
+            top: 5%;
+            left: 40px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Bottone iniziale spento */
+        .faro {
+            width: 120px;
+            height: 120px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: none;
+            position: relative;
+            z-index: 2;
+            transition: background-color 0.5s, box-shadow 0.5s ease-in-out;
+        }
+
+        /* Testo iniziale */
+        .faro span {
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Logo nascosto all'inizio */
+        .faro img {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Effetto attivato al passaggio del mouse */
+        .faro-container:hover .faro {
+            background-color: white;
+            box-shadow: 0 0 60px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .faro-container:hover .faro span {
+            opacity: 0; /* Nasconde il testo */
+        }
+
+        .faro-container:hover .faro img {
+            opacity: 1; /* Mostra il logo */
+        }
+
+        .faro-container:hover .luce {
+            opacity: 1; /* Accende la luce */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="faro-container">
+        <div class="luce"></div>
+        <div class="faro">
+            <span>Come possiamo aiutarti?</span>
+            <img src="logo nero.png" alt="Logo">
+        </div>
+    </div>
+
+</body>
+</html>
