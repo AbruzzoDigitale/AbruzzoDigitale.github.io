@@ -1,46 +1,88 @@
+Per ottenere l'effetto desiderato (un bottone con sfondo nero, un'icona SVG nascosta che appare solo quando illuminata da un cerchio di luce bianca che segue il cursore), puoi utilizzare un mix di **HTML**, **CSS** e **JavaScript**. Questo effetto si basa sull'utilizzo di **background positioning** dinamico e su uno pseudo-elemento che segue il mouse.
+
+---
+
+### Codice completo da inserire in un file HTML:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apri Pagine</title>
+    <title>Bottone con effetto luce</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f8ff;
-            padding: 20px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #121212; /* Sfondo scuro per contrasto */
         }
-        h1 {
-            color: #333;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
+
+        .magic-button {
+            position: relative;
+            width: 200px; /* Larghezza del bottone */
+            height: 200px; /* Altezza del bottone */
+            background: black; /* Scuro di base */
+            border-radius: 50%; /* Forma circolare */
+            border: 2px solid white; /* Bordo bianco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
             cursor: pointer;
-            font-size: 16px;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
-        button:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+        .magic-button img {
+            width: 70%; /* Dimensione immagine */
+            filter: brightness(0.3); /* Immagine scura di base */
+            transition: filter 0.2s ease; /* Transizione fluida per la luminosità */
+        }
+
+        .light {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.5) 20%, transparent 60%);
+            border-radius: 50%; /* Segue la forma del bottone */
+            mix-blend-mode: screen; /* Effetto luce che "schiarisce" */
+            transition: background 0.2s ease; /* Effetto di transizione */
+        }
+
+        .magic-button:hover img {
+            filter: brightness(0.3); /* Rimuove effetti globali di hover sull'immagine */
         }
     </style>
 </head>
 <body>
-    <h1>Apri Pagine in Altre Schede</h1>
-    <button onclick="openPage('button1.html')">Test bottone 1</button>
-    <button onclick="openPage('button2.html')">Test bottone 2</button>
+    <div class="magic-button">
+        <img src="Pasa.svg" alt="Icona">
+        <div class="light"></div>
+    </div>
 
-    <script>
-        function openPage(pageUrl) {
-            window.open(pageUrl, '_blank');
-        }
+    <script type="text/javascript">
+        const button = document.querySelector('.magic-button');
+        const light = document.querySelector('.light');
+
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Posizione relativa al bottone
+            const y = e.clientY - rect.top;
+            light.style.setProperty('--x', `${x}px`);
+            light.style.setProperty('--y', `${y}px`);
+        });
+
+        button.addEventListener('mouseleave', () => {
+            light.style.setProperty('--x', '50%'); // Posizione centrale
+            light.style.setProperty('--y', '50%');
+        });
     </script>
 </body>
 </html>
+```
+
