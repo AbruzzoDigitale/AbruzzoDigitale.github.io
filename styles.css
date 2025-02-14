@@ -10,12 +10,15 @@ body {
 }
 
 .scroll-container {
-    width: 300px;
+    width: 90%;
+    max-width: 400px;
     height: 400px;
     background-color: #1e1e1e;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    margin: auto;
+    padding: 10px;
 }
 
 .scroll-content {
@@ -27,6 +30,8 @@ body {
     overflow-x: hidden;
     scrollbar-width: none; /* Nasconde la scrollbar in Firefox */
     -ms-overflow-style: none; /* Nasconde la scrollbar in Edge */
+    height: 100%;
+    cursor: grab;
 }
 
 /* Nasconde la scrollbar in Chrome e Safari */
