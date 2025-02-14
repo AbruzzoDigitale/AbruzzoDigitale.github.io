@@ -1,16 +1,9 @@
-Per ottenere l'effetto desiderato (un bottone con sfondo nero, un'icona SVG nascosta che appare solo quando illuminata da un cerchio di luce bianca che segue il cursore), puoi utilizzare un mix di **HTML**, **CSS** e **JavaScript**. Questo effetto si basa sull'utilizzo di **background positioning** dinamico e su uno pseudo-elemento che segue il mouse.
-
----
-
-### Codice completo da inserire in un file HTML:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bottone con effetto luce</title>
+    <title>Bottone con effetto luce intensa</title>
     <style>
         body {
             margin: 0;
@@ -25,7 +18,7 @@ Per ottenere l'effetto desiderato (un bottone con sfondo nero, un'icona SVG nasc
             position: relative;
             width: 200px; /* Larghezza del bottone */
             height: 200px; /* Altezza del bottone */
-            background: black; /* Scuro di base */
+            background: black; /* Sfondo scuro di base */
             border-radius: 50%; /* Forma circolare */
             border: 2px solid white; /* Bordo bianco */
             display: flex;
@@ -37,8 +30,8 @@ Per ottenere l'effetto desiderato (un bottone con sfondo nero, un'icona SVG nasc
 
         .magic-button img {
             width: 70%; /* Dimensione immagine */
-            filter: brightness(0.3); /* Immagine scura di base */
-            transition: filter 0.2s ease; /* Transizione fluida per la luminosità */
+            filter: brightness(0.3); /* Immagine inizialmente molto scura */
+            transition: filter 0.2s ease; /* Transizione fluida */
         }
 
         .light {
@@ -48,14 +41,17 @@ Per ottenere l'effetto desiderato (un bottone con sfondo nero, un'icona SVG nasc
             width: 100%;
             height: 100%;
             pointer-events: none;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.5) 20%, transparent 60%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                        rgba(255, 255, 255, 1) 15%,  /* Centro completamente bianco */
+                        rgba(255, 255, 255, 0.8) 30%, /* Bordo intermedio */
+                        rgba(255, 255, 255, 0) 60%); /* Dissolvenza */
             border-radius: 50%; /* Segue la forma del bottone */
-            mix-blend-mode: screen; /* Effetto luce che "schiarisce" */
-            transition: background 0.2s ease; /* Effetto di transizione */
+            mix-blend-mode: screen; /* Effetto luce intensa */
+            transition: background 0.1s ease; /* Effetto più veloce */
         }
 
         .magic-button:hover img {
-            filter: brightness(0.3); /* Rimuove effetti globali di hover sull'immagine */
+            filter: brightness(0.1); /* Aumenta la luminosità dell'icona */
         }
     </style>
 </head>
@@ -78,11 +74,9 @@ Per ottenere l'effetto desiderato (un bottone con sfondo nero, un'icona SVG nasc
         });
 
         button.addEventListener('mouseleave', () => {
-            light.style.setProperty('--x', '50%'); // Posizione centrale
+            light.style.setProperty('--x', '50%'); // Torna al centro
             light.style.setProperty('--y', '50%');
         });
     </script>
 </body>
 </html>
-```
-

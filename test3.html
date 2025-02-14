@@ -14,16 +14,21 @@
             overflow: hidden;
         }
 
+        a {
+            text-decoration: none; /* Rimuove sottolineatura del link */
+        }
+
         .faro-container {
             position: relative;
             cursor: pointer;
+            display: inline-block; /* Permette al link di mantenere la dimensione del bottone */
         }
 
         /* Cono di luce - inizialmente nascosto */
         .luce {
             position: absolute;
-            width: 200px;
-            height: 300px;
+            width: 250px;
+            height: 400px;
             background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 80%);
             filter: blur(25px);
             transform: rotate(-40deg);
@@ -34,35 +39,37 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        /* Bottone iniziale spento */
+        /* Bottone iniziale con bordo bianco e trasparente */
         .faro {
-            width: 120px;
-            height: 120px;
-            background-color: #444;
+            width: 180px;
+            height: 180px;
+            background-color: transparent;
             border-radius: 50%;
+            border: 3px solid white;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: none;
             position: relative;
             z-index: 2;
-            transition: background-color 0.5s, box-shadow 0.5s ease-in-out;
+            transition: background-color 0.5s, box-shadow 0.5s ease-in-out, border 0.5s;
         }
 
-        /* Testo iniziale */
+        /* Testo iniziale in MAIUSCOLO e BOLD */
         .faro span {
             position: absolute;
             color: white;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: bold; /* GRASSETTO */
             text-align: center;
+            text-transform: uppercase; /* MAIUSCOLO */
             transition: opacity 0.3s ease-in-out;
         }
 
         /* Logo nascosto all'inizio */
         .faro img {
             position: absolute;
-            width: 80px;
+            width: 100px;
             height: auto;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -71,7 +78,8 @@
         /* Effetto attivato al passaggio del mouse */
         .faro-container:hover .faro {
             background-color: white;
-            box-shadow: 0 0 60px 30px rgba(255, 255, 255, 0.3);
+            border: 3px solid white;
+            box-shadow: 0 0 80px 40px rgba(255, 255, 255, 0.4);
         }
 
         .faro-container:hover .faro span {
@@ -90,13 +98,16 @@
 </head>
 <body>
 
-    <div class="faro-container">
-        <div class="luce"></div>
-        <div class="faro">
-            <span>Come possiamo aiutarti?</span>
-            <img src="logo nero.png" alt="Logo">
+    <!-- Link che avvolge il bottone -->
+    <a href="https://abruzzodigitale.it/contatti/">
+        <div class="faro-container">
+            <div class="luce"></div>
+            <div class="faro">
+                <span>COME POSSIAMO AIUTARTI?</span>
+                <img src="https://abruzzodigitale.it/wp-content/uploads/2024/11/Logo-verticale-nero-sfondo-trasparente-con-R.png" alt="Logo">
+            </div>
         </div>
-    </div>
+    </a>
 
 </body>
 </html>

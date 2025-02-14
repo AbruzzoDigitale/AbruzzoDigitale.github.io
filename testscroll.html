@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Area</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scroll-container">
+        <div class="scroll-content">
+            <!-- Genera dinamicamente 50 elementi -->
+            <script>
+                for (let i = 1; i <= 50; i++) {
+                    document.write(`<div class="scroll-item">Elemento ${i}</div>`);
+                }
+            </script>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
