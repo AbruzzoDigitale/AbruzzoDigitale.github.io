@@ -1,82 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bottone con effetto luce intensa</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #121212; /* Sfondo scuro per contrasto */
-        }
-
-        .magic-button {
-            position: relative;
-            width: 200px; /* Larghezza del bottone */
-            height: 200px; /* Altezza del bottone */
-            background: black; /* Sfondo scuro di base */
-            border-radius: 50%; /* Forma circolare */
-            border: 2px solid white; /* Bordo bianco */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .magic-button img {
-            width: 70%; /* Dimensione immagine */
-            filter: brightness(0.3); /* Immagine inizialmente molto scura */
-            transition: filter 0.2s ease; /* Transizione fluida */
-        }
-
-        .light {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-                        rgba(255, 255, 255, 1) 15%,  /* Centro completamente bianco */
-                        rgba(255, 255, 255, 0.8) 30%, /* Bordo intermedio */
-                        rgba(255, 255, 255, 0) 60%); /* Dissolvenza */
-            border-radius: 50%; /* Segue la forma del bottone */
-            mix-blend-mode: screen; /* Effetto luce intensa */
-            transition: background 0.1s ease; /* Effetto più veloce */
-        }
-
-        .magic-button:hover img {
-            filter: brightness(0.1); /* Aumenta la luminosità dell'icona */
-        }
-    </style>
+    <title>Sidebar Responsive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="magic-button">
-        <img src="Pasa.svg" alt="Icona">
-        <div class="light"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="header">
+            <div class="toggle-btn" id="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <h5>Servizi</h5>
+        </div>
+        <div class="menu" id="menu">
+            <div class="menu-item">
+                <img src="https://abruzzodigitale.it/wp-content/uploads/2024/10/Social-Media-Marketing.png" alt="Icona" class="menu-icon">
+                <span class="menu-title">Home</span>
+                <button class="btn btn-sm btn-outline-light menu-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="menu-item">
+                <img src="https://abruzzodigitale.it/wp-content/uploads/2024/10/Social-Media-Marketing.png" alt="Icona" class="menu-icon">
+                <span class="menu-title">Documenti</span>
+                <button class="btn btn-sm btn-outline-light menu-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="menu-item">
+                <img src="https://abruzzodigitale.it/wp-content/uploads/2024/10/Social-Media-Marketing.png" alt="Icona" class="menu-icon">
+                <span class="menu-title">Impostazioni</span>
+                <button class="btn btn-sm btn-outline-light menu-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="menu-item">
+                <img src="https://abruzzodigitale.it/wp-content/uploads/2024/10/Social-Media-Marketing.png" alt="Icona" class="menu-icon">
+                <span class="menu-title">Contatti</span>
+                <button class="btn btn-sm btn-outline-light menu-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="collapsed-content" id="collapsed-content">Servizi</div>
+        <div class="footer">
+            <button class="btn btn-primary"><i class="fas fa-home"></i></button>
+            <button class="btn btn-secondary"><i class="fas fa-cog"></i></button>
+        </div>
     </div>
+    <div class="content">
+        <div class="content-header">
+            <h1>Titolo principale</h1>
+            <p>Sottotitolo descrittivo</p>
+        </div>
+        <div class="content-cards">
+            <div class="cards-container" id="cards-container">
 
-    <script type="text/javascript">
-        const button = document.querySelector('.magic-button');
-        const light = document.querySelector('.light');
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Titolo Completo del Prodotto</span>
+                        <span class="card-category">Categoria del Prodotto</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-description">Questa è una descrizione dettagliata che adesso è completamente visibile senza troncamento. Questa è una descrizione dettagliata dettagliata dettagliata dettagliata dettagliata.</span>
+                        <div class="card-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-layer-group"></i></button>
+                            <button class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">a partire da €99.99</span>
+                    </div>
+                </div>
 
-        button.addEventListener('mousemove', (e) => {
-            const rect = button.getBoundingClientRect();
-            const x = e.clientX - rect.left; // Posizione relativa al bottone
-            const y = e.clientY - rect.top;
-            light.style.setProperty('--x', `${x}px`);
-            light.style.setProperty('--y', `${y}px`);
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Titolo Completo del Prodotto</span>
+                        <span class="card-category">Categoria del Prodotto</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-description">Questa è una descrizione dettagliata che adesso è completamente visibile senza troncamento. Questa è una descrizione dettagliata dettagliata dettagliata dettagliata dettagliata.</span>
+                        <div class="card-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-layer-group"></i></button>
+                            <button class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">a partire da €99.99</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Titolo Completo del Prodotto</span>
+                        <span class="card-category">Categoria del Prodotto</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-description">Questa è una descrizione dettagliata che adesso è completamente visibile senza troncamento. Questa è una descrizione dettagliata dettagliata dettagliata dettagliata dettagliata.</span>
+                        <div class="card-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-layer-group"></i></button>
+                            <button class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">a partire da €99.99</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Titolo Completo del Prodotto</span>
+                        <span class="card-category">Categoria del Prodotto</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-description">Questa è una descrizione dettagliata che adesso è completamente visibile senza troncamento. Questa è una descrizione dettagliata dettagliata dettagliata dettagliata dettagliata.</span>
+                        <div class="card-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-layer-group"></i></button>
+                            <button class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">a partire da €99.99</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Titolo Completo del Prodotto</span>
+                        <span class="card-category">Categoria del Prodotto</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-description">Questa è una descrizione dettagliata che adesso è completamente visibile senza troncamento. Questa è una descrizione dettagliata dettagliata dettagliata dettagliata dettagliata.</span>
+                        <div class="card-buttons">
+                            <button class="btn btn-primary"><i class="fas fa-layer-group"></i></button>
+                            <button class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">a partire da €99.99</span>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="content-footer">
+            <button class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i></button>
+            <span class="footer-text">TOT: € 99.99</span>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('toggle-btn').addEventListener('click', function() {
+            let sidebar = document.getElementById('sidebar');
+            let menu = document.getElementById('menu');
+            let collapsedContent = document.getElementById('collapsed-content');
+            sidebar.classList.toggle('collapsed');
+            
+            let icon = document.getElementById('toggle-btn').querySelector('i');
+            if (sidebar.classList.contains('collapsed')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-arrow-right');
+                menu.style.display = 'none';
+                collapsedContent.style.display = 'flex';
+            } else {
+                icon.classList.remove('fa-arrow-right');
+                icon.classList.add('fa-bars');
+                menu.style.display = 'block';
+                collapsedContent.style.display = 'none';
+            }
         });
-
-        button.addEventListener('mouseleave', () => {
-            light.style.setProperty('--x', '50%'); // Torna al centro
-            light.style.setProperty('--y', '50%');
-        });
+        
     </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
