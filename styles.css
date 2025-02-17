@@ -3,7 +3,7 @@ body {
     margin: 0;
     background-color: #FFFFFF; /* Sfondo pagina principale */
     height: 100vh;
-    overflow: hidden; /* Impedisce espansione */
+    overflow: auto; /* Impedisce espansione */
 }
 
 /* Sidebar */
@@ -182,7 +182,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    max-height: 550px; /* Impedisce l'espansione e mantiene l'area contenuta */
+    height: auto; /* Impedisce l'espansione e mantiene l'area contenuta */
     
 }
 
