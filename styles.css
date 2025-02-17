@@ -3,7 +3,7 @@ body {
     margin: 0;
     background-color: #FFFFFF; /* Sfondo pagina principale */
     height: 100vh;
-    overflow: auto; /* Impedisce espansione */
+    overflow:auto; /* Impedisce espansione */
 }
 
 /* Sidebar */
@@ -156,13 +156,12 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Intestazione */
 .content-header {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .content-header h1 {
@@ -178,12 +177,10 @@ body {
 /* Sezione delle card */
 .content-cards {
     flex-grow: 1;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    padding: 10px;
     height: auto; /* Impedisce l'espansione e mantiene l'area contenuta */
-    
 }
 
 
@@ -194,8 +191,8 @@ body {
     grid-auto-rows: auto; /* Altezza automatica per evitare sovrapposizioni */
     gap: 15px;
     overflow-y: auto; /* Scroll verticale se necessario */
-    overflow-x: hidden;
-    max-height: 100%;
+    overflow-x: auto;
+    height: auto;
     padding-right: 10px;
     scroll-behavior: smooth;
 }
